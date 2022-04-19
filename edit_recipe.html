@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>EditRecipe</title>
+</head>
+<body>
+    <div class="d-flex justify-content-between align-items-center py-2 px-5">
+        <div>
+            <h1 class="text-center">Welcome {{user.first_name}}!</h1>
+            <h4>Edit your recipe!!!</h4>
+        </div>
+        <div>
+            <a href="/dashboard">Dashboard</a>
+            <a href="/logout">Logout</a>
+        </div>
+    </div>
+    <form action="/update/recipe" method="post" class="col-9">
+        <div class="d-flex justify-content-between col-8">
+            <input type="hidden" name="id" value={{edit.id}}>
+            <div class="col-8">
+                <div class="form-group">
+                    <label for="name">Name of recipe:</label>
+                    <input type="text" name="name" id="name" value="{{edit.name}}">
+                </div>
+                <div class="form-group">
+                    <label for="description">Description:</label>
+                    <textarea name="description">{{edit.description}}</textarea>
+                </div>
+                <div class="form-group">
+                    <label for="instructions">Instructions:</label>
+                    <textarea name="instructions">{{edit.instructions}}</textarea>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="form-group">
+                    <label for="date_made">Date Made On:</label>
+                    <input type="date" name="date_made" value="{edit.date_made.strftime('%Y-%m-%d')}}">
+                </div>
+                <label for="under30">Under 30 Minutes?</label>
+                <div>
+                    <input type="radio" name="under30" value="0">
+                    <label for="0">No</label>
+                </div>
+                <div>
+                    <input type="radio" name="under30" value="1">
+                    <label for="1">Yes</label>
+                </div>
+                <input type="submit" value="Edit Recipe">
+            </div>
+        </div>
+    </form>
+</body>
+</html>

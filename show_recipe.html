@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Show</title>
+</head>
+<body>
+    <div class="d-flex justify-content-between align-items-center py-2 px-5">
+        <div>
+            <h1 class="text-center">Welcome {{user.first_name}}!</h1>
+            <h4>Recipe Information!</h4>
+        </div>
+        <div>
+            <a href="/dashboard">Dashboard</a>
+            <a href="/logout">Logout</a>
+        </div>
+    </div>
+    <div class="card col-8 mx-auto">
+        <div class="card-body">
+            <h2 class="card-title">{{recipe.name}}</h2>
+            <p class="card-text">Description:  {{recipe.description}}</p>
+            <p class="card-text">Under 30 Minutes:
+                {%  if recipe.under30 == 1 %}
+                Yes
+                {% else %}
+                No
+                {% endif %}
+            </p>
+            <p class="card-text">Instructions:  {{recipe.instructions}}</p>
+            <p class="card-text">Made On:  {{recipe.date_made.strftime('%Y-%m-%d')}}</p>
+        </div>
+    </div>
+</body>
+</html>
